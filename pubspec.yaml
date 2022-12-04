@@ -1,0 +1,23 @@
+name: movies_list_infinite_scroll
+description: A new Flutter project called Movie List Infinite Scroll.
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.18.4 <3.0.0'
+
+dependencies:
+  cupertino_icons: ^1.0.2
+  flutter:
+    sdk: flutter
+  http: ^0.13.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  very_good_analysis: ^3.1.0
+
+flutter:
+  uses-material-design: true
