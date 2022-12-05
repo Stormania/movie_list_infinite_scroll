@@ -44,6 +44,15 @@ class _MovieInfiniteListPageState extends State<MovieInfiniteListPage> {
     _controllerMovie.addListener(_infiniteScroll);
   }
 
+  void _infiniteScroll() {
+    final double offset = _controllerMovie.offset;
+    final double maxScrollExtent = _controllerMovie.position.maxScrollExtent;
+
+    if (offset > maxScrollExtent - MediaQuery.of(context).size.height && !_isLoading) {
+      _getMovies();
+    }
+  }
+
   Future<void> _getMovies() async {
     final Response response = await get(Uri.parse('https://yts.mx/api/v2/list_movies.json?limit=10&page=$_page'));
     final Map<String, dynamic> map = jsonDecode(response.body) as Map<String, dynamic>;
@@ -59,12 +68,6 @@ class _MovieInfiniteListPageState extends State<MovieInfiniteListPage> {
     setState(() {
       _isLoading = false;
     });
-  }
-
-  void _infiniteScroll() {
-    if (_controllerMovie.position.pixels == _controllerMovie.position.maxScrollExtent) {
-      _getMovies();
-    }
   }
 
   @override
