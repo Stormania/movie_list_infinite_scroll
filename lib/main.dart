@@ -61,6 +61,12 @@ class _MovieInfiniteListPageState extends State<MovieInfiniteListPage> {
     });
   }
 
+  void _infiniteScroll() {
+    if (_controllerMovie.position.pixels == _controllerMovie.position.maxScrollExtent) {
+      _getMovies();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -151,11 +157,5 @@ class _MovieInfiniteListPageState extends State<MovieInfiniteListPage> {
         ),
       ),
     );
-  }
-
-  void _infiniteScroll() {
-    if (_controllerMovie.position.pixels == _controllerMovie.position.maxScrollExtent) {
-      _getMovies();
-    }
   }
 }
